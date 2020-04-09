@@ -30,9 +30,9 @@ include("config.php");
 include("connect.php");
 include("libery.php");
 
-if (isset($_SESSION['bantime']) && ($_SESSION['bantime'] > time())) {
-    echo ($_SESSION['bantime'] - time());
-}
+// if (isset($_SESSION['bantime']) && ($_SESSION['bantime'] > time())) {
+//     echo ($_SESSION['bantime'] - time());
+// }
 
 
 
@@ -40,31 +40,31 @@ $result_count = $mysqli->query('SELECT count(*) FROM guests'); //считаем 
 $count = $result_count->fetch_array(MYSQLI_NUM)[0];
 echo "количество записей: <b>$count</b>";
 $result_count->free();
-// echo $pagesize;
+echo $pagesize;
 
-$pagecount = ceil($count / $pagesize);
+// $pagecount = ceil($count / $pagesize);
 
-$currientpage = $_GET['page'] ?? 1;
+// $currientpage = $_GET['page'] ?? 1;
 
-$startrow = ($currientpage - 1) * $pagesize;
+// $startrow = ($currientpage - 1) * $pagesize;
 
-$pageination = "<div class='pageination'>\n";
+// $pageination = "<div class='pageination'>\n";
 
-for ($i = 1; $i <= $pagecount; $i++) {
-    // if ($currientpage == $i) {
-    //     $str = " class='selectedpage'";
-    // } else {
-    //     $str = "";
-    // }
-    $str = ($currientpage == $i) ? " class='selectedpage'" : "";
-    $pageination .= "<a href='?page=$i'$str>$i</a>\n";
-}
+// for ($i = 1; $i <= $pagecount; $i++) {
+//     if ($currientpage == $i) {
+//         $str = " class='selectedpage'";
+//     } else {
+//         $str = "";
+//     }
+//     $str = ($currientpage == $i) ? " class='selectedpage'" : "";
+//     $pageination .= "<a href='?page=$i'$str>$i</a>\n";
+// }
 
-$pageination .= "</div>";
+// $pageination .= "</div>";
 
-$result = $mysqli->query("SELECT * FROM guests LIMIT $startrow, $pagesize");
+$result = $mysqli->query("SELECT * FROM guests LIMIT $startrow, $pagesize, ");
 
-echo $pageination;
+// echo $pageination;
 
 echo "<table border='1'>\n";
 while ($row = $result->fetch_object()) {
@@ -75,7 +75,7 @@ while ($row = $result->fetch_object()) {
 }
 echo "</table>\n";
 
-echo $pageination;
+// echo $pageination;
 
 $result->free();
 

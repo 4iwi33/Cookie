@@ -1,6 +1,6 @@
 <?php
 
-$pagesize = 3;
+$pagesize = 4;
 $host = "remotemysql.com";
 $user = "c8NtAeI5eS";
 $password = "u926KRJdWp";
