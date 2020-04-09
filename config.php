@@ -1,7 +1,7 @@
 <?php
 
 $pagesize = 4;
-$host = "";
-$user = "";
-$password = "";
-$database = "";
+$host = "remotemysql.com";
+$user = "SJqmgcEMeC";
+$password = "lwQQUrhN0M";
+$database = "SJqmgcEMeC";
