@@ -56,7 +56,9 @@ for ($i = 1; $i <= $pagecount; $i++) {
 $pageination .= "</div>";
 
 $result = $mysqli->query("SELECT * FROM guests LIMIT $startrow, $pagesize,");
+
 echo $pageination;
+
 echo "<table border='1'>\n";
 while ($row = $result->fetch_object()) {
     echo "<tr>";
