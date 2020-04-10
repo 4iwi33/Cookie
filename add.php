@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('libery.php');
+include('function.php');
 include("config.php");
 include('connect.php');
 

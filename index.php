@@ -28,7 +28,7 @@ session_start();
 
 include("config.php");
 include("connect.php");
-include("libery.php");
+include("function.php");
 
 if (isset($_SESSION['bantime']) && ($_SESSION['bantime'] > time())) {
     echo ($_SESSION['bantime'] - time());
