@@ -38,13 +38,14 @@ if (isset($_SESSION['bantime']) && ($_SESSION['bantime'] > time())) {
 
 $result_count = $mysqli->query('SELECT count(*) FROM guests'); //считаем количество строк в таблице
 $count = $result_count->fetch_array(MYSQLI_NUM)[0];
-// echo "количество записей: <b>$count</b>";
+echo "количество записей: <b>$count</b>";
 $result_count->free();
-// echo $pagesize;
+echo "<br>";
+echo "pagesize:" . $pagesize;
 
 $pagecount = ceil($count / $pagesize);
 
-$currientpage = $_GET['page'] ?? 1;
+// $currientpage = $_GET['page'] ?? 1;
 
 $startrow = ($currientpage - 1) * $pagesize;
 
@@ -60,16 +61,16 @@ $result = $mysqli->query("SELECT * FROM guests LIMIT $startrow, $pagesize,");
 echo $pageination;
 
 echo "<table border='1'>\n";
-while ($row = $result->fetch_object()) {
-    echo "<tr>";
-    echo "<td>" . smile($row->text) . "</td>";
-    echo "<td>" . $row->name . "</td>";
-    echo "</tr>";
-}
+// while ($row = $result->fetch_object()) {
+//     echo "<tr>";
+//     echo "<td>" . smile($row->text) . "</td>";
+//     echo "<td>" . $row->name . "</td>";
+//     echo "</tr>";
+// }
 echo "</table>\n";
 
-echo $pageination;
-$result->free();
+// echo $pageination;
+// $result->free();
 
 $mysqli->close();
 ?>
